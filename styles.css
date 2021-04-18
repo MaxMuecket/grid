@@ -1,0 +1,33 @@
+.item-a {
+  grid-area: header;
+}
+.item-b {
+  grid-area: main;
+}
+.item-c {
+  grid-area: sidebar;
+}
+.item-d {
+  grid-area: footer;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
+}
+
+.hidden {
+  content-visibility: hidden;
+  /* when hidden, we want the element to size as if it had one child of 0x500px size */
+  contain-intrinsic-size: 0 500px;
+}
+.visible {
+  content-visibility: visible;
+  /* this is here to avoid layout shift when switching between .hidden and .visible */
+  contain: style layout paint;
+}
